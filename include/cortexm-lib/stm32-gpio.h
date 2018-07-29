@@ -52,39 +52,6 @@
 #error Unsupported device
 #endif
 
-
-# if 0
-/*
- * Usage: typedef Gpio<(unsigned int)GPIOC, 15> sseg_driver_lat;
- */
-template<unsigned int Port, unsigned char Pin>
-class Gpio {
-public:
-    static void set(bool val) {
-        if (val) {
-            set_high();
-        } else {
-            set_low();
-        }
-    }
-
-    static void set_high() {
-        reinterpret_cast<GPIO_TypeDef*>(Port)->BSRR = 1 << Pin;
-    }
-
-    static void set_low() {
-        reinterpret_cast<GPIO_TypeDef*>(Port)->BRR = 1 << Pin;
-    }
-
-    static bool value() {
-        return ((reinterpret_cast<GPIO_TypeDef*>(Port)->IDR & 1<<Pin) ? true : false);
-    }
-
-private:
-    Gpio();  // no instances
-};
-#endif
-
 #include <cstdint>
 
 
