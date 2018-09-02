@@ -34,7 +34,12 @@ public:
         static_assert(N > 0, "Zero-length array is not permitted in ISO C++.");
     }
 
-    // TODO from pointer and length, from std::array
+    ArrayRef(pointer p, size_t len) noexcept
+        : length(len), data(p)
+    {
+    }
+
+    // TODO from std::array
 
     //
     // methods and operators
