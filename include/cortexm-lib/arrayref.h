@@ -65,11 +65,11 @@ public:
     // iterators
     //
 
-    constexpr iterator begin() noexcept {
+    constexpr iterator begin() const noexcept {
         return data;
     }
 
-    constexpr iterator end() noexcept {
+    constexpr iterator end() const noexcept {
         return data + length;
     }
 
