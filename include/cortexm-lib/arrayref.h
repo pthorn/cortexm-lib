@@ -40,6 +40,9 @@ public:
     // methods and operators
     //
 
+    ArrayRef& operator=(ArrayRef const&) noexcept = default;
+    ArrayRef& operator=(ArrayRef&&) noexcept = default;
+
     constexpr const_reference operator[](size_t const n) const noexcept {
         // TODO bounds check
         return *(data + n);
@@ -79,6 +82,6 @@ public:
     }
 
 private:
-    size_t const length;
-    pointer const data;
+    size_t length;
+    pointer data;
 };
