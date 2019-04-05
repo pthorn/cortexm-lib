@@ -66,6 +66,10 @@ public:
         return length * sizeof(T);
     }
 
+    constexpr bool is_empty() const noexcept {
+        return length == 0 || data == nullptr;
+    }
+
     //
     // iterators
     //
