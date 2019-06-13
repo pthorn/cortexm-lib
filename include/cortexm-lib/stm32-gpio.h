@@ -43,11 +43,13 @@
 //STM32F423xx
 
 #if defined(STM32F030x6) || defined(STM32F030x8) || defined(STM32F072xB)
-#include <stm32f0xx.h>
+#include "stm32f0xx.h"
+#elif defined (STM32L052xx)
+#include "stm32l0xx.h"
 #elif defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F407xx) || defined(STM32F411xE) || defined(STM32F429xx)
-#include <stm32f4xx.h>
+#include "stm32f4xx.h"
 #elif defined(STM32F746xx)
-#include <stm32f7xx.h>
+#include "stm32f7xx.h"
 #else
 #error Unsupported device
 #endif
