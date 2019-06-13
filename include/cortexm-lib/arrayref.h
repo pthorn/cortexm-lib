@@ -4,10 +4,9 @@
 #include <memory>
 
 
-template<class T>
+template<typename T>
 class ArrayRef {
 public:
-
     typedef T value_type;
     typedef value_type* pointer;
     typedef value_type const* const_pointer;
@@ -21,7 +20,8 @@ public:
     //
 
     constexpr ArrayRef() noexcept
-        : length(0), data(nullptr)
+        : length(0),
+          data(nullptr)
     { }
 
     constexpr ArrayRef(ArrayRef const&) noexcept = default;
@@ -29,11 +29,13 @@ public:
 
     template<size_t N>
     ArrayRef(T (& a)[N]) noexcept
-        : length(N), data(std::addressof(a[0]))  //data(N > 0 ? std::addressof(a[0]) : nullptr)
+        : length(N),
+          data(std::addressof(a[0]))
     {
         static_assert(N > 0, "Zero-length array is not permitted in ISO C++.");
     }
 
+    // with explicit length
     ArrayRef(pointer p, size_t len) noexcept
         : length(len), data(p)
     {
@@ -59,11 +61,11 @@ public:
     }
 
     constexpr size_t size() const noexcept {
-        return length;
+        return data == nullptr ? 0 : length;
     }
 
     constexpr size_t size_bytes() const noexcept {
-        return length * sizeof(T);
+        return size() * sizeof(T);
     }
 
     constexpr bool is_empty() const noexcept {
