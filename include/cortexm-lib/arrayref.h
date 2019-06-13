@@ -92,6 +92,14 @@ public:
         return data + length;
     }
 
+    //
+    // slices
+    //
+
+    constexpr ArrayRef<T> slice(size_t const pos, size_t const length) const {
+        return ArrayRef<T>{begin() + pos, length};
+    }
+
 private:
     size_t length;
     pointer data;
