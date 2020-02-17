@@ -42,7 +42,7 @@
 //STM32F413xx
 //STM32F423xx
 
-#if defined(STM32F030x6) || defined(STM32F030x8) || defined(STM32F072xB)
+#if defined(STM32F030x6) || defined(STM32F030x8) || defined(STM32F051x8) || defined(STM32F072xB)
 #include "stm32f0xx.h"
 #elif defined (STM32L052xx)
 #include "stm32l0xx.h"
