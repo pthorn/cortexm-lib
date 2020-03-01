@@ -76,11 +76,19 @@ public:
     // iterators
     //
 
-    constexpr iterator begin() const noexcept {
+    constexpr iterator begin() noexcept {
         return data;
     }
 
-    constexpr iterator end() const noexcept {
+    constexpr const_iterator begin() const noexcept {
+        return data;
+    }
+
+    constexpr iterator end() noexcept {
+        return data + length;
+    }
+
+    constexpr const_iterator end() const noexcept {
         return data + length;
     }
 
