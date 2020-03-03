@@ -104,8 +104,16 @@ public:
     // slices
     //
 
-    constexpr ArrayRef<T> slice(size_t const pos, size_t const length) const {
-        return ArrayRef<T>{begin() + pos, length};
+    constexpr ArrayRef<T> slice(size_t const pos, size_t const len) {
+        // TODO bounds check
+        //static_assert(pos + len < length);
+        return ArrayRef<T>{begin() + pos, len};
+    }
+
+    constexpr ArrayRef<T> slice(size_t const pos, size_t const len) const {
+        // TODO bounds check
+        //static_assert(pos + len < length);
+        return ArrayRef<T>{begin() + pos, len};
     }
 
 private:
