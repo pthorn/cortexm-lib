@@ -27,6 +27,21 @@ public:
     constexpr ArrayRef(ArrayRef const&) noexcept = default;
     constexpr ArrayRef(ArrayRef &&) noexcept = default;
 
+    // from any array-like / vector-like object, including
+    // std::array, std::vector, etl::vector, etc.
+    template<typename C>
+    constexpr ArrayRef(C& c)
+        : length(std::end(c) - std::begin(c)),
+          data(std::begin(c))
+    { }
+
+    // from pair of iterators
+    constexpr ArrayRef(pointer start, pointer end)
+        : length(end - start),
+          data(start)
+    { }
+
+    // from C array
     template<size_t N>
     ArrayRef(T (& a)[N]) noexcept
         : length(N),
@@ -38,10 +53,7 @@ public:
     // with explicit length
     ArrayRef(pointer p, size_t len) noexcept
         : length(len), data(p)
-    {
-    }
-
-    // TODO from std::array
+    { }
 
     //
     // methods and operators
