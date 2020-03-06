@@ -84,6 +84,10 @@ public:
         return length == 0 || data == nullptr;
     }
 
+    constexpr bool empty() const noexcept {
+        return is_empty();
+    }
+
     //
     // iterators
     //
