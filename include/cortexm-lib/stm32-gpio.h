@@ -46,10 +46,14 @@
 #include "stm32f0xx.h"
 #elif defined (STM32L052xx)
 #include "stm32l0xx.h"
-#elif defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F407xx) || defined(STM32F411xE) || defined(STM32F429xx)
+#elif defined (STM32L476xx)
+#include "stm32l4xx.h"
+#elif defined(STM32F401xC) || defined(STM32F401xE)|| defined(STM32F405xx) || defined(STM32F407xx) || defined(STM32F411xE) || defined(STM32F429xx)
 #include "stm32f4xx.h"
 #elif defined(STM32F746xx)
 #include "stm32f7xx.h"
+#elif defined(STM32H723xx)
+#include "stm32h7xx.h"
 #else
 #error Unsupported device
 #endif

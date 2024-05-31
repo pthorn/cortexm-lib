@@ -2,7 +2,7 @@
 
 #include <cstddef>
 #include <memory>
-
+#include <iterator>  // std::begin(), std::end()
 
 template<typename T>
 class ArrayRef {
@@ -27,7 +27,7 @@ public:
     constexpr ArrayRef(ArrayRef const&) noexcept = default;
     constexpr ArrayRef(ArrayRef &&) noexcept = default;
 
-    // from any array-like / vector-like object, including
+    // from any array-like / vector-like container, including
     // std::array, std::vector, etl::vector, etc.
     template<typename C>
     constexpr ArrayRef(C& c)
