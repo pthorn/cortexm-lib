@@ -1,6 +1,8 @@
 #pragma once
 
 #include <type_traits>
+#include <utility>
+#include <new>
 
 /*
  * References
@@ -42,7 +44,7 @@ public:
         if (other.has_value) {
             new (&storage_value) storage_type(other.storage_value);
         } else {
-            new (&storage_error_code) std::error_code(other.storage_error_code);
+            new (&storage_error_code) ErrorCodeT(other.storage_error_code);
         }
     }
 
@@ -52,7 +54,7 @@ public:
         if (other.has_value) {
             new (&storage_value) storage_type(std::move(other.storage_value));
         } else {
-            new (&storage_error_code) std::error_code(other.storage_error_code);
+            new (&storage_error_code) ErrorCodeT(other.storage_error_code);
         }
     }
 
